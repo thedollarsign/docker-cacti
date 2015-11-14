@@ -1,0 +1,24 @@
+## --- cacti ---
+cacti-db:
+    image: million12/mariadb
+    container_name: dacti-db
+    net: host
+    restart: always
+    privileged: true
+    environment:
+        - TZ=Asia/Bangkok
+        - MARIADB_USER=cacti
+        - MARIADB_PASS=passwd
+cacti:
+    image: thedollarsign/cacti
+    container_name: cacti
+    net: host
+    restart: always
+    privileged: true
+    environment:
+        - TZ=Asia/Bangkok
+        - DB_ADDRESS=127.0.0.1
+        - DB_USER=cacti
+        - DB_PASS=passwd
+
+## EOF

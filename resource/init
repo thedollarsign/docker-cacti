@@ -1,0 +1,25 @@
+#!/bin/bash
+## --- mikrotik plubin ---
+CactiDir=/usr/share/cacti
+
+## --- copy ---
+mkdir -p $CactiDir/resource/snmp_queries
+cp -r /mikrotik-plugin/resource/snmp_queries/* $CactiDir/resource/snmp_queries/.
+
+mkdir -p $CactiDir/resource/script_server
+cp -r /mikrotik-plugin/resource/script_server/* $CactiDir/resource/script_server/.
+
+mkdir -p $CactiDir/scripts
+cp -r /mikrotik-plugin/scripts/* $CactiDir/scripts/.
+
+mkdir -p $CactiDir/template
+cp -r /mikrotik-plugin/template/* $CactiDir/template/.
+
+## --- acl ---
+mkdir -p /root/.config/pango
+/usr/bin/setfacl -R -m "g:cacti:rwx" /root
+/usr/bin/setfacl -R -d -m "g:cacti:rwx" /root
+/usr/bin/setfacl -R -m "g:apache:rwx" /root
+/usr/bin/setfacl -R -d -m "g:apache:rwx" /root
+
+## EOF

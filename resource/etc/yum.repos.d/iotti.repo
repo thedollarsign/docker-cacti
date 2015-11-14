@@ -1,0 +1,6 @@
+[iotti]
+name=repo.iotti.biz
+baseurl=http://repo.iotti.biz/CentOS/7
+failovermethod=priority
+enabled=1
+gpgcheck=0
